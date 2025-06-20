@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduHub - Login</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 5rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .login-container h2 {
+      margin-bottom: 1.5rem;
+      color: #0047ab;
+      text-align: center;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #0047ab;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .login-container p {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .login-container a {
+      color: #0047ab;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="landing-page.html" class="logo" aria-label="EduHub Home">EduHub</a>
+    <nav>
+      <a href="landing-page.html">Home</a>
+      <a href="signup-page.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="login-container">
+    <h2>Login to Your Account</h2>
+    <form id="loginForm">
+      <input type="email" id="email" name="email" placeholder="Email address" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup-page.html">Sign up here</a></p>
+  </section>
+
+  <footer>
+    <small>&copy; 2025 EduHub. All rights reserved.</small>
+  </footer>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+      if (response.ok) {
+        alert('Login successful!');
+        localStorage.setItem('userId', data.userId);
+        window.location.href = 'student-dashboard-page.html';
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>

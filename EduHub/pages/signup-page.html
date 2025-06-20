@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>EduHub - Sign Up</title>
+    <link rel="stylesheet" href="../css/global-style.css">
+    <style>
+      .signup-container {
+        max-width: 400px;
+        margin: 5rem auto;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      }
+
+      .signup-container h2 {
+        margin-bottom: 1.5rem;
+        color: #0047ab;
+        text-align: center;
+      }
+
+      .signup-container input {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .signup-container button {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #0047ab;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .signup-container p {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .signup-container a {
+        color: #0047ab;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="landing-page.html">Home</a>
+      <a href="login-page.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="signup-container">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <input type="text" id="name" name="name" placeholder="Full Name" value="caleb" required />
+      <input type="email" id="email" name="email" placeholder="Email address" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login-page.html">Login here</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+
+  <script>
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      try {
+        const response = await fetch('http://localhost:3000/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          alert('Signup successful! Please login.');
+          window.location.href = 'login-page.html';
+        } else {
+          alert(data.message || 'Signup failed.');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>

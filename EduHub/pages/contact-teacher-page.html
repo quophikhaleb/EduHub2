@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Teacher - EduHub</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f7ff;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .contact-form {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #0047ab;
+    }
+
+    label, input, select, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    input, select, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .live-session {
+      margin-top: 2rem;
+      background-color: #eaf0ff;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .live-session button {
+      background-color: #0070ff;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0047ab;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="library.html">Courses</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="contact-form">
+      <h2>Contact Your Teacher</h2>
+      <form action="/send-message" method="POST" enctype="multipart/form-data">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="course">Course</label>
+        <select id="course" name="course" required>
+          <option value="math">Mathematics Basics</option>
+          <option value="science">Introduction to Science</option>
+          <option value="history">World History</option>
+        </select>
+
+        <label for="type">Message Type</label>
+        <select id="type" name="type" required>
+          <option value="academic">Academic Question</option>
+          <option value="general">General Support</option>
+        </select>
+
+        <label for="topic">Topic (optional)</label>
+        <input type="text" id="topic" name="topic" placeholder="Enter topic name">
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+        <label for="attachment">Attach Image or Document</label>
+        <input type="file" id="attachment" name="attachment" accept="image/*, .pdf, .docx">
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="live-session">
+      <h3>Live Video Session</h3>
+      <p>Click below to join your teacher's video call.</p>
+      <a href="https://meet.google.com/" target="_blank">
+        <button type="button">Join Live Session</button>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+</body>
+</html>

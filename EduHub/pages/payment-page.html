@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment & Progress - EduHub</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f7ff;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .payment-box, .progress-box {
+      background-color: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #0047ab;
+    }
+
+    label, input, select {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    input, select {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .progress-bar {
+      background-color: #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress {
+      height: 20px;
+      background-color: #0047ab;
+      width: 70%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0047ab;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="library.html">Courses</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="payment-box">
+      <h2>Pay for Course</h2>
+      <form action="/pay" method="POST">
+        <label for="course">Select Course</label>
+        <select id="course" name="course" required>
+          <option value="math">Mathematics Basics - GHS 40</option>
+          <option value="science">Introduction to Science - GHS 35</option>
+          <option value="history">World History - GHS 30</option>
+        </select>
+
+        <label for="network">Select Mobile Network</label>
+        <select id="network" name="network" required>
+          <option value="mtn">MTN</option>
+          <option value="tigo">Tigo</option>
+          <option value="telecel">Telecel</option>
+        </select>
+
+        <label for="momo">Mobile Money Number</label>
+        <input type="tel" id="momo" name="momo" placeholder="e.g. 024xxxxxxx" required>
+
+        <button type="submit">Pay Now</button>
+      </form>
+    </div>
+
+    <div class="progress-box">
+      <h2>Your Progress</h2>
+      <p>Mathematics Basics</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 70%;"></div>
+      </div>
+      <p>Introduction to Science</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 40%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+</body>
+</html>

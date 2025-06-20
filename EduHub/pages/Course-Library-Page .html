@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Library - EduHub</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f7ff;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .library-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .library-container h2 {
+      color: #0047ab;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .course-details {
+      padding: 1rem;
+    }
+
+    .course-details h3 {
+      color: #0047ab;
+      margin: 0.5rem 0;
+    }
+
+    .course-details p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .course-details .price {
+      font-weight: bold;
+      color: #0047ab;
+      margin-top: 0.5rem;
+    }
+
+    .course-details button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0047ab;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="contact-teacher.html">Contact Teacher</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="library-container">
+    <h2>Available Courses</h2>
+    <div class="courses-grid" id="coursesGrid">
+      <!-- Course cards will be injected here by JS -->
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+  <script>
+    let courseData = [];
+
+    async function fetchCourses() {
+      const courseGrid = document.getElementById('coursesGrid');
+      try {
+        const response = await fetch('http://localhost:3000/api/courses');
+        courseData = await response.json();
+        displayCourses();
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+        courseGrid.innerHTML = '<p style="text-align:center; color:red;">Failed to load courses.</p>';
+      }
+    }
+
+    function displayCourses() {
+      const courseGrid = document.getElementById('coursesGrid');
+      if (!courseData.length) {
+        courseGrid.innerHTML = '<p style="text-align:center;">No courses available.</p>';
+        return;
+      }
+      courseGrid.innerHTML = courseData.map(course => `
+        <div class="course-card">
+          <img src="${course.image}" alt="${course.category}">
+          <div class="course-details">
+            <h3>${course.title}</h3>
+            <p>${course.description}</p>
+            <p class="price">${course.price}</p>
+            <button type="button" onclick="accessCourse('${course._id ? course._id : ''}')">Access Course</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function accessCourse(courseId) {
+      alert('Accessing course: ' + courseId);
+    }
+
+    window.addEventListener('DOMContentLoaded', fetchCourses);
+  </script>
+</body>
+</html>

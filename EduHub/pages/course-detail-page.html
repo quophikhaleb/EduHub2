@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub - Course Details</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    .course-detail-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    .course-detail-container h2 {
+      color: #0047ab;
+      margin-bottom: 1rem;
+    }
+
+    .course-detail-container p {
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0047ab;
+      margin-bottom: 1.5rem;
+    }
+
+    .pay-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: white;
+      background-color: #0047ab;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="dashboard-page.html">Dashboard</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <section class="course-detail-container">
+    <h2>Mathematics - Algebra Basics</h2>
+    <p>This course introduces students to the foundations of algebra including variables, expressions, equations, and problem-solving strategies. Suitable for beginners who want to understand algebra from scratch.</p>
+    <div class="course-price">Price: GHS 50</div>
+    <button class="pay-button" onclick="accessCourse('${course._id}')">Access Course</button>
+  </section>
+<script src="../js/course-access.js"></script>
+
+</body>
+</html>

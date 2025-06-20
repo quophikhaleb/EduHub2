@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Inbox - EduHub</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f7ff;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .notification-icon {
+      position: absolute;
+      right: 2rem;
+      top: 1.2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .notification-badge {
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      position: absolute;
+      top: 0.8rem;
+      right: 1.8rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      color: #0047ab;
+    }
+
+    .message-preview {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .message-list {
+      flex: 1;
+    }
+
+    .message-box {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 1.2rem;
+      cursor: pointer;
+    }
+
+    .message-box h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .message-box p {
+      margin: 0.5rem 0;
+    }
+
+    .view-message {
+      flex: 1;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .attachment a {
+      text-decoration: underline;
+      color: #0047ab;
+    }
+
+    .video-button {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0047ab;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub Admin</div>
+    <nav>
+      <a href="admin-dashboard.html">Dashboard</a>
+      <a href="upload-course.html">Upload Course</a>
+      <a href="admin-messages.html">Messages</a>
+    </nav>
+    <div class="notification-icon" title="New Messages">🔔<span class="notification-badge" id="notificationCount">0</span></div>
+  </header>
+
+  <div class="container">
+    <h2>Inbox - Student Messages</h2>
+    <div class="message-preview">
+      <div class="message-list" id="messageList">
+        <!-- Message list -->
+      </div>
+      <div class="view-message" id="messageView">
+        <h3>Select a message to view</h3>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+
+  <script>
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('messageList');
+        const view = document.getElementById('messageView');
+        const badge = document.getElementById('notificationCount');
+
+        badge.textContent = data.length;
+
+        data.forEach(msg => {
+          const box = document.createElement('div');
+          box.className = 'message-box';
+          box.innerHTML = `
+            <h3>${msg.name}</h3>
+            <p><strong>Course:</strong> ${msg.course}</p>
+            <p>${msg.message.slice(0, 50)}...</p>
+          `;
+
+          box.onclick = () => {
+            view.innerHTML = `
+              <h3>${msg.name} (${msg.email})</h3>
+              <p><strong>Course:</strong> ${msg.course}</p>
+              <p><strong>Topic:</strong> ${msg.topic || 'N/A'}</p>
+              <p><strong>Type:</strong> ${msg.type}</p>
+              <p><strong>Message:</strong></p>
+              <p>${msg.message}</p>
+              ${msg.attachment ? `<div class="attachment"><a href="${msg.attachment}" target="_blank">View Attachment</a><br><img src="${msg.attachment}" alt="Attachment Image" style="max-width:100%;margin-top:0.5rem;" /></div>` : ''}
+              <button class="video-button">Start Live Video Chat</button>
+            `;
+          };
+
+          list.appendChild(box);
+        });
+      });
+  </script>
+</body>
+</html>

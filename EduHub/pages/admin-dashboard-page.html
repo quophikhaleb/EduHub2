@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f7ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .dashboard-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 {
+      color: #0047ab;
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #0047ab;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub Admin</div>
+    <nav>
+      <a href="admin-upload-portal.html">Upload</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="card">
+      <h3>Course Management</h3>
+      <a href="admin-upload-portal.html">Upload New Course</a>
+      <a href="#">Edit/Delete Courses</a>
+    </div>
+
+    <div class="card">
+      <h3>Student Management</h3>
+      <a href="#">View Registered Students</a>
+      <a href="#">Messages from Students</a>
+    </div>
+
+    <div class="card">
+      <h3>Statistics</h3>
+      <p>Total Courses: 12</p>
+      <p>Total Students: 123</p>
+      <p>Total Revenue: GHS 4,300</p>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 1rem; background: #0047ab; color: white;">
+    &copy; 2025 EduHub Admin. All rights reserved.
+  </footer>
+</body>
+</html>

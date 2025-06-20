@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduHub Chatbot Assistant</title>
+  <link rel="stylesheet" href="../css/global-style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef4ff;
+      margin: 0;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chatbox {
+      height: 400px;
+      overflow-y: auto;
+      background-color: #f4faff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .chat-message {
+      margin-bottom: 1rem;
+    }
+
+    .chat-message.user {
+      text-align: right;
+    }
+
+    .chat-message.bot {
+      text-align: left;
+    }
+
+    .chat-message p {
+      display: inline-block;
+      padding: 0.75rem;
+      border-radius: 10px;
+      max-width: 70%;
+    }
+
+    .chat-message.user p {
+      background-color: #0047ab;
+      color: white;
+    }
+
+    .chat-message.bot p {
+      background-color: #e6f0ff;
+      color: black;
+    }
+
+    form input[type="text"] {
+      width: 80%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      padding: 0.75rem 1.5rem;
+      margin-left: 1rem;
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub Assistant</div>
+    <nav>
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="chat-container">
+    <h2 style="text-align: center; color: #0047ab;">Ask a Topic-related Question</h2>
+    <div class="chatbox" id="chatbox">
+      <div class="chat-message user">
+        <p>Explain photosynthesis briefly.</p>
+      </div>
+      <div class="chat-message bot">
+        <p>Photosynthesis is the process by which green plants use sunlight to make food from carbon dioxide and water.</p>
+      </div>
+    </div>
+    <form onsubmit="sendMessage(event)">
+      <input type="text" id="userInput" placeholder="Type your question here..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer style="text-align: center; padding: 1rem; background: #0047ab; color: white;">
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      const input = document.getElementById('userInput');
+      const message = input.value;
+      const chatbox = document.getElementById('chatbox');
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-message user';
+      userMsg.innerHTML = `<p>${message}</p>`;
+      chatbox.appendChild(userMsg);
+
+      // Simulate bot reply
+      const botMsg = document.createElement('div');
+      botMsg.className = 'chat-message bot';
+      botMsg.innerHTML = `<p>Let me look that up for you...</p>`;
+      chatbox.appendChild(botMsg);
+
+      chatbox.scrollTop = chatbox.scrollHeight;
+      input.value = '';
+    }
+  </script>
+</body>
+</html>

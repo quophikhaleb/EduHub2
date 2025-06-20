@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub - Student Dashboard</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    .dashboard-container {
+      padding: 2rem;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .course-card {
+      background-color: #f5faff;
+      border: 1px solid #cce0ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-card h3 {
+      color: #0047ab;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #cce0ff;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #0047ab;
+      width: 60%; /* Sample progress */
+    }
+
+    .action-links {
+      margin-top: 1rem;
+    }
+
+    .action-links a {
+      color: #0047ab;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="landing-page.html">Home</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <section class="dashboard-container">
+    <div class="dashboard-header">
+      <h2>Welcome, Student Name</h2>
+      <p>Here are your enrolled courses:</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Mathematics for SHS</h3>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: 60%;"></div>
+      </div>
+      <div class="action-links">
+        <a href="#">View Course</a>
+        <a href="#">Contact Tutor</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <h3>Social Studies - WASSCE</h3>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: 40%;"></div>
+      </div>
+      <div class="action-links">
+        <a href="#">View Course</a>
+        <a href="#">Contact Tutor</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+<script src="../js/course-access.js"></script>
+</body>
+</html>

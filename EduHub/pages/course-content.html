@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Content - EduHub</title>
+  <link rel="stylesheet" href="../css/global-style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f7ff;
+    }
+    header {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+    .container {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .sidebar {
+      width: 25%;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .content {
+      flex: 1;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #0047ab;
+    }
+    video, iframe {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .chat-btn {
+      background-color: #0047ab;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0047ab;
+      color: white;
+      margin-top: 2rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="student-dashboard.html">Dashboard</a>
+      <a href="library.html">Courses</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Topics</h3>
+      <ul>
+        <li>Introduction</li>
+        <li>Chapter 1: Numbers</li>
+        <li>Chapter 2: Addition</li>
+        <li>Chapter 3: Subtraction</li>
+        <li>Final Assessment</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <h2>Mathematics Basics - Introduction</h2>
+      <video controls>
+        <source src="../videos/math-intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <iframe src="../books/math-intro.pdf" height="500px"></iframe>
+
+      <button class="chat-btn">Ask Tutor</button>
+    </main>
+  </div>
+
+  <footer>
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+</body>
+</html>

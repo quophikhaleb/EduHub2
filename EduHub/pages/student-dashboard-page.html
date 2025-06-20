@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub - Student Dashboard</title>
+  <link rel="stylesheet" href="../css/global-style.css">
+  <style>
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dashboard-container h2 {
+      text-align: center;
+      color: #0047ab;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #f4f9ff;
+      border-left: 6px solid #0047ab;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #0047ab;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #0047ab;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EduHub</div>
+    <nav>
+      <a href="progress-tracker-page.html">Progress</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <section class="dashboard-container">
+    <h2>Welcome, Student</h2>
+
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>Your Courses</h3>
+        <p>Access and continue learning from the courses you've enrolled in.</p>
+        <a href="course-detail-page.html?courseId=101">Go to Courses</a>
+
+      </div>
+      <div class="card">
+        <h3>Track Progress</h3>
+        <p>View how far you've progressed in each course.</p>
+        <a href="progress-tracker-page.html">View Progress</a>
+      </div>
+
+      <div class="card">
+        <h3>Ask ChatBot</h3>
+        <p>Confused? Ask our smart course assistant anything related to your subject.</p>
+        <a href="chatbot-page.html">Go to ChatBot</a>
+      </div>
+
+      <div class="card">
+        <h3>Contact Teacher</h3>
+        <p>Need more help? Reach out to your course instructor directly.</p>
+        <a href="contact-teacher-page.html">Message Teacher</a>
+      </div>
+    
+    </div>
+  </section>
+</body>
+</html>
