@@ -1,2 +1,2 @@
-# EduHub
+
 # EduHub2
